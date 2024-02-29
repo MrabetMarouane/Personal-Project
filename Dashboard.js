@@ -1,9 +1,23 @@
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Button } from 'react-native'
 import React, { useState, useEffect}from 'react'
 import { firebase} from '../config' 
 
+import { useNavigation } from '@react-navigation/native';
+
+
 const Dashboard = () => {
-    const [name, setName] = useState('')
+    const [name, setName] = useState([]);
+    const navigation = useNavigation();
+
+    //CHANGER LE MOT DE PASSE 
+    const changePassword = () =>{
+        firebase.auth().sendPasswordResetEmail(firebase.auth().currentUser.email)
+        .then(() => {
+            alert("Email de réinitialisation du mot de passe envoyé !")
+        }).catch((error) => {
+            alert(error)
+        })
+    }
 
     useEffect(() => {
         firebase.firestore().collection('users')
@@ -13,7 +27,7 @@ const Dashboard = () => {
                 setName(snapshot.data())
             }
             else {
-                console.log('Utilisateurs non existant')
+                console.log('Utilisateur connecté(e)')
             }
         })
     }, [])
@@ -22,6 +36,31 @@ const Dashboard = () => {
             <Text style = {{fontSize:20, fontWeight : 'bold'}}>
                 Bonjour, {name.firstName}
             </Text>
+
+            <TouchableOpacity
+               onPress={() => navigation.navigate('Scanner')}
+               style={styles.button}             
+
+            >
+                <Text style = {{fontSize:22, fontWeight : 'bold'}}>
+                Scanner 
+                </Text>
+    
+            </TouchableOpacity>
+
+            <TouchableOpacity
+               onPress={() => {
+                changePassword()
+            }}
+               style={styles.button}             
+
+            >
+                <Text style = {{fontSize:22, fontWeight : 'bold'}}>
+                Changer le mot de passe
+                </Text>
+    
+            </TouchableOpacity>
+
             <TouchableOpacity
                onPress={() => {firebase.auth().signOut()}}
                style={styles.button}             
@@ -32,12 +71,15 @@ const Dashboard = () => {
                 </Text>
     
             </TouchableOpacity>
+
+            
         </SafeAreaView>
     )
     
 }
 
 export default Dashboard
+
 const styles = StyleSheet.create({
     container : {
         flex : 1,

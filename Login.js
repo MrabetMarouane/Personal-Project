@@ -15,7 +15,20 @@ const Login = () => {
             alert(error.message)
         }
     }
+
+    // Mot de passe oublié
+
+    const forgetPassword = () =>{
+        firebase.auth().sendPasswordResetEmail(email)
+        .then(() => {
+            alert("Email de réinitialisation du mot de passe envoyé !")
+        }).catch((error) => {
+            alert(error)
+        })
+    }
+
     return (
+        
         <View style ={styles.container}>
             <Text style ={{fontWeight : 'bold', fontSize : 26}}>
                 Connexion
@@ -57,6 +70,18 @@ const Login = () => {
                 </Text>
 
             </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={() => {forgetPassword()}}
+                style={{marginTop : 20}}
+            
+            >
+                <Text style={{fontWeight : 'bold', fontSize: 16}}>
+                 Mot de passe oublié ?
+                </Text>
+
+            </TouchableOpacity>
+            
         </View>
     )
 }

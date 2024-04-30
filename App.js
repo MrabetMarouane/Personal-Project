@@ -9,6 +9,7 @@ import Registration from "./src/Registration";
 import Dashboard from "./src/Dashboard";
 import Header from "./components/Header";
 import Scanner from "./src/Scanner";
+import RechargeCredit from "./src/RechargeCredit";
 
 //import { Stack } from "@react-navigation/stack";
 
@@ -66,6 +67,7 @@ function App() {
                 }
               }}
             />
+    
           </>
         ) : (
           <>
@@ -73,7 +75,7 @@ function App() {
               name="Dashboard"
               component={Dashboard}
               options={{
-                headerTitle: () => <Header name="Dashboard" />,
+                headerTitle: () => <Header name="Accueil" />,
                 headerStyle: {
                   height: 150,
                   borderBottomLeftRadius: 50,
@@ -99,6 +101,7 @@ function App() {
                 }
               }}
             />
+            
           </>
         )}
       </Stack.Navigator>

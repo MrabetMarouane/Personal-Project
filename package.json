@@ -1,0 +1,44 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-navigation/drawer": "^6.6.15",
+    "@react-navigation/material-bottom-tabs": "^6.2.24",
+    "@react-navigation/native": "^6.1.12",
+    "@react-navigation/stack": "^6.3.23",
+    "axios": "^1.6.7",
+    "expo": "^50.0.17",
+    "expo-barcode-scanner": "~12.9.3",
+    "expo-camera": "^14.1.3",
+    "expo-paypal": "^1.4.1",
+    "expo-status-bar": "~1.11.1",
+    "express": "^4.19.2",
+    "firebase": "^9.6.11",
+    "lottie-ios": "^3.1.8",
+    "lottie-react-native": "6.5.1",
+    "paypal-rest-sdk": "^1.8.1",
+    "react": "18.2.0",
+    "react-native": "0.73.6",
+    "react-native-event-listeners": "^1.0.7",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-modal": "^13.0.1",
+    "react-native-paper": "^5.12.3",
+    "react-native-paypal": "^4.1.0",
+    "react-native-paypal-wrapper": "^1.3.2",
+    "react-native-safe-area-context": "4.8.2",
+    "react-native-screens": "3.29.0",
+    "react-native-vector-icons": "^10.0.3",
+    "react-native-webview": "13.6.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0"
+  },
+  "private": true
+}
